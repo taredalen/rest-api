@@ -9,8 +9,7 @@ exports.postElement =  async(req, res, next) => {
         res.status(200).json(data);
     }
     catch (e) {
-        const errors = Object.keys(e.errors).map(key => e.errors[key].message);
-        res.status(400).render('tweets/tweet-form', {errors})
+        res.status(400).json({ message: e.message })
     }
 }
 
@@ -27,6 +26,7 @@ exports.deleteElements = async (req, res, next) => {
     try {
         await Model.deleteMany({});
         res.send(`Everything has been deleted.`)
+        res.status(200);
     }
     catch (e) {
         res.status(400).json({ message: e.message })
