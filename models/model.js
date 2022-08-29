@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const solutionItemSchema = new mongoose.Schema({
-    selector: {
+    method: {
         required: true,
         type: String
     },

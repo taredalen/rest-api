@@ -3,7 +3,7 @@ const Model = require('../models/model');
 exports.postElement =  async(req, res, next) => {
     try {
         const data = await new Model({
-            selector: req.body.selector,
+            method: req.body.method,
             value: req.body.value
         }).save();
         res.status(200).json(data);
@@ -25,7 +25,7 @@ exports.getElements = async (req, res, next) => {
 
 exports.deleteElements = async (req, res, next) => {
     try {
-        await Model.remove({});
+        await Model.deleteMany({});
         res.send(`Everything has been deleted.`)
     }
     catch (e) {
