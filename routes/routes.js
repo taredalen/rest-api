@@ -1,4 +1,4 @@
-const router = require('express').Router()
+const router = require('express').Router();
 const Model = require('../models/model');
 
 router.post('/post', async (req, res) => {
@@ -12,7 +12,7 @@ router.post('/post', async (req, res) => {
     catch (error) {
         res.status(400).json({ message: error.message })
     }
-})
+});
 
 router.get('/getOne/:id', async (req, res) => {
     try {
@@ -20,18 +20,18 @@ router.get('/getOne/:id', async (req, res) => {
         res.json(data)
     }
     catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(400).json({ message: error.message })
     }
-})
+});
 
 router.get('/getAll', async (req, res) => {
     try {
         res.json(await Model.find())
     }
     catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(400).json({ message: error.message })
     }
-})
+});
 
 router.patch('/update/:id', async (req, res) => {
     try {
@@ -43,9 +43,9 @@ router.patch('/update/:id', async (req, res) => {
         res.send(result)
     }
     catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(400).json({ message: error.message })
     }
-})
+});
 
 router.delete('/delete/:id', async (req, res) => {
     try {
