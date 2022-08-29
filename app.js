@@ -1,6 +1,7 @@
 const morgan = require('morgan');
 const express = require('express');
 const routes = require('./routes/routes');
+const cors = require('cors');
 
 require('./database');
 require('dotenv').config();
@@ -11,6 +12,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+app.use(cors());
 app.use('/api', routes);
 
 app.listen(port);
