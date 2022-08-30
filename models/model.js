@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
-const solutionItemSchema = new mongoose.Schema({
+const solutionSchema = new mongoose.Schema({
+    content: {
+        required: true,
+        type: mongoose.Schema.Types.Mixed
+    }
+    /*
     method: {
         required: true,
         type: String
@@ -9,6 +14,8 @@ const solutionItemSchema = new mongoose.Schema({
         required: true,
         type: String
     }
-})
 
-module.exports = mongoose.model('mapping', solutionItemSchema)
+     */
+});
+
+module.exports = mongoose.model('solution', solutionSchema)

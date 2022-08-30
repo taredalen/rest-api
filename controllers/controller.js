@@ -3,8 +3,8 @@ const Model = require('../models/model');
 exports.postElement =  async(req, res, next) => {
     try {
         const data = await new Model({
-            method: req.body.method,
-            value: req.body.value
+            content: req.body.content,
+            //value: req.body.value
         }).save();
         res.status(200).json(data);
     }
