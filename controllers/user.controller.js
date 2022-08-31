@@ -1,0 +1,45 @@
+const User = require('../models/user.model');
+
+/*
+exports.createUser = async (user) => {
+    try {
+        const hashedPassword = await User.hashPassword(user.password);
+        const newUser = new User({
+            username: user.username,
+            local: {
+                email: user.email,
+                password: hashedPassword
+            }
+        })
+        return newUser.save();
+    } catch(e) {
+        throw e;
+    }
+}
+
+
+ */
+exports.findUserPerEmail = (email) => {
+    return User.findOne({ 'local.email': email }).exec();
+}
+
+exports.findUserPerId = (id) => {
+    return User.findById(id).exec();
+}
+
+exports.signup = async (req, res, next) => {
+    const user = req.body;
+    try {
+        const hashedPassword = await User.hashPassword(user.password);
+        const newUser = new User({
+            username: user.username,
+            local: {
+                email: user.email,
+                password: hashedPassword
+            }
+        })
+        return newUser.save();
+    } catch(e) {
+        throw e;
+    }
+}
