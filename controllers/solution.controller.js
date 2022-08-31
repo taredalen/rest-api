@@ -1,10 +1,9 @@
-const Model = require('../models/model');
+const Model = require('../models/solution.model');
 
 exports.postElement =  async(req, res, next) => {
     try {
         const data = await new Model({
             content: req.body.content,
-            //value: req.body.value
         }).save();
         res.status(200).json(data);
     }
