@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const schema = mongoose.Schema;
 
-const userSchema = schema({
+const userSchema =  mongoose.Schema({
     username: { type: String, required: true },
     local: {
         email: { type: String, required: true },
@@ -11,7 +10,6 @@ const userSchema = schema({
 });
 
 userSchema.statics.hashPassword = (password) => {
-
     return bcrypt.hash(password,10);
 }
 
@@ -19,6 +17,4 @@ userSchema.methods.comparePassword = function (password) {
     return bcrypt.compare(password, this.local.password);
 }
 
-const user = mongoose.model('user', userSchema);
-
-module.exports = user;
+module.exports = mongoose.model('user', userSchema);

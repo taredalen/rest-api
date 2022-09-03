@@ -1,7 +1,7 @@
 const { app } = require('../app');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const { findUserPerEmail, findUserPerId } = require('../queries/users.queries')
+const { findUserPerEmail, findUserPerId } = require('../controllers/user.controller')
 
 app.use(passport.initialize());
 app.use(passport.session());
