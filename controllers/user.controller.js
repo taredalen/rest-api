@@ -3,14 +3,11 @@ const Model = require('../models/user.model');
 
 exports.signup = async (req, res, next) => {
     try {
-        const user = req.body;
-        const hashedPassword = await Model.hashPassword(user.local.password);
+        const hashedPassword = await Model.hashPassword(req.body.password);
         const newUser = await new Model({
-            username: user.username,
-            local: {
-                email: user.local.email,
-                password: hashedPassword
-            }
+            username: req.body.username,
+            email: req.body.email,
+            password: hashedPassword
         }).save();
         res.status(200).json(newUser);
     } catch(e) {
@@ -19,7 +16,7 @@ exports.signup = async (req, res, next) => {
 }
 
 exports.findUserPerEmail = (email) => {
-    return Model.findOne({ 'local.email': email }).exec();
+    return Model.findOne({ 'email': email }).exec();
 }
 
 exports.findUserPerId = (id) => {
