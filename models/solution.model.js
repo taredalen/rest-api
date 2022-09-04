@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const solutionSchema = new mongoose.Schema({
-    content: {
+    mapping: {
         required: true,
         type: mongoose.Schema.Types.Mixed
     }
