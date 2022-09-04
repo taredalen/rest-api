@@ -23,5 +23,3 @@ exports.findUserPerId = (id) => {
     return Model.findById(id).exec();
 }
 
-
-
