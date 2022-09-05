@@ -9,13 +9,16 @@ const auth = require('./auth.routes');
 router.use('/users', users);
 
 
+router.use('/auth', auth);
+
+
 router.get('/protected', ensureAuthenticated, (req, res) => {
 
-    console.log('req.user._id');
-    res.json(req.user._id);
-})
+    console.log('req.cookies.jwt', req.cookies.jwt)
+    // res.json(req.user._id);
+    res.redirect('/api');
+});
 
-router.use('/auth', auth);
 router.use('/api', solution);
 
 module.exports = router;

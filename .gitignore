@@ -2,4 +2,6 @@
 /node_modules/
 /package-lock.json
 /.idea
-.env 
+.env
+private.key
+public.key
