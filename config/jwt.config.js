@@ -18,7 +18,7 @@ const createJwtToken = (user) => {
 exports.createJwtToken = createJwtToken;
 
 const extractUserFromToken = async (req, res, next) => {
-    console.log('----extractUserFromToken---')
+    console.log('----extractUserFromToken---');
     const token = req.cookies.jwt;
     if (token) {
         try {
