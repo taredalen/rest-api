@@ -4,18 +4,8 @@ const solutionSchema = new mongoose.Schema({
     mapping: {
         required: true,
         type: mongoose.Schema.Types.Mixed
-    }
-    /*
-    method: {
-        required: true,
-        type: String
     },
-    value: {
-        required: true,
-        type: String
-    }
-
-     */
+   // author: { type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true }
 });
 
 module.exports = mongoose.model('solution', solutionSchema)

@@ -1,9 +1,10 @@
+require('./database');
+
+const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const express = require('express');
 const index = require('./routes');
 const cors = require('cors');
-
-require('./database');
 
 const app = express();
 exports.app = app;
@@ -11,8 +12,12 @@ exports.app = app;
 const port = process.env.PORT || 3000;
 
 
-require('./config/session.config');
-require('./config/passport.config');
+app.use(cookieParser());
+
+require('./config/jwt.config');
+
+// require('./config/session.config');
+// require('./config/passport.config');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

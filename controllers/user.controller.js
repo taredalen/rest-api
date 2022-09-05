@@ -20,6 +20,5 @@ exports.findUserPerEmail = (email) => {
 }
 
 exports.findUserPerId = (id) => {
-    return Model.findById(id).exec();
+    return Model.findOne({ _id: id }).exec();
 }
-
